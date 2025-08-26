@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ItemBuilder.AddPage"
+             Title="">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Top Section -->
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Image Source="title.png" HorizontalOptions="CenterAndExpand" WidthRequest="200" HeightRequest="30" Margin="0,10,0,0"/>
+
+            <Frame BorderColor="#C8AA6E" CornerRadius="0" Padding="0" Margin="5">
+                <Entry x:Name="champEntry" Placeholder="Choose a Champion..." HorizontalOptions="FillAndExpand" TextColor="#F0E6D2"/>
+            </Frame>
+            
+            <Frame BorderColor="#C8AA6E" CornerRadius="0" Padding="0" Margin="5">
+                <Entry x:Name="nameEntry" Placeholder="Name Your Build..." HorizontalOptions="FillAndExpand" TextColor="#F0E6D2"/>
+            </Frame>
+            
+            <Image Source="additems.png" HorizontalOptions="CenterAndExpand" WidthRequest="150" HeightRequest="30" Margin="0,0,5,0"/>
+
+            <Frame BorderColor="#C8AA6E" CornerRadius="0" Padding="0" Margin="5">
+                <SearchBar x:Name="itemSearch" Placeholder="Add an Item..." HorizontalOptions="FillAndExpand"
+                           VerticalTextAlignment="Center" SearchButtonPressed="OnSearchButtonPressed" 
+                           TextColor="#F0E6D2" />
+            </Frame>
+
+            <Grid>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Orientation="Horizontal">
+                    <Picker x:Name="itemPicker" MaximumWidthRequest="100" TextColor="#F0E6D2"/>
+                    
+                    <StackLayout>
+                        <Button Text="ADD ITEM"  BorderWidth="1" BorderColor="#F0E6D2" WidthRequest="87" TextColor="#C89B3C" FontAttributes="Bold" FontSize="12" Clicked="OnSearchButtonPressed">
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#005A82" Offset="0.8"/>
+                                    <GradientStop Color="#091428" Offset="0.0"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                    </StackLayout>
+                    
+                </StackLayout>
+
+                <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="EndAndExpand" Padding="20,0,0,0">
+                    <Label Text="Delete Mode" TextColor="#F0E6D2"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                    <Switch x:Name="deleteSwitch" IsToggled="False" Toggled="deleteSwitch_Toggled" ThumbColor="#F0E6D2" OnColor="#C89B3C"/>
+                </StackLayout>
+                
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <!-- Middle Section -->
+        <StackLayout Grid.Row="1" Padding="10,10,10,0">
+            <!-- CollectionView for displaying items -->
+            <CollectionView x:Name="itemCollectionView" SelectionMode="Single" SelectionChanged="OnCollectionViewSelectionChanged" VerticalOptions="FillAndExpand">
+                
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="3" VerticalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <!-- item template is generated in my backend -->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
+        </StackLayout>
+
+        <!-- Bottom Section -->
+        <VerticalStackLayout Grid.Row="2" Spacing="2" Padding="0,0,0,5">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Button x:Name="addButton" Text="ADD" BorderWidth="1" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="AddButton_Clicked">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#005A82" Offset="0.0"/>
+                                <GradientStop Color="#0397AB" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Button x:Name="analyticsButton" Text="ANALYTICS" BorderWidth="1" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="analyticsButton_Clicked">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#005A82" Offset="1.0"/>
+                                <GradientStop Color="#0397AB" Offset="0.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+            </Grid>
+
+            <StackLayout>
+                <Button x:Name="cancelButton" Text="CANCEL" BorderWidth="1" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="CancelButton_Clicked">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#005A82" Offset="0.8"/>
+                            <GradientStop Color="#091428" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+
+        </VerticalStackLayout>
+
+
+    </Grid>
+</ContentPage>

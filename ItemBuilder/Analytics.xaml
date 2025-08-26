@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ItemBuilder.Analytics"
+             xmlns:drawables="clr-namespace:ItemBuilder.Drawables"
+             Title="">
+    
+    <ContentPage.Resources>
+        <drawables:ChartDrawable x:Key="chartDrawable"/>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Spacing="2">
+            <Image Source="buildstats.png" HorizontalOptions="CenterAndExpand" WidthRequest="200" HeightRequest="30" Margin="0,20,0,5"/>
+            <BoxView HeightRequest="2" Color="#C8AA6E" HorizontalOptions="CenterAndExpand" WidthRequest="250" Margin="0,0,0,20"/>
+        </StackLayout>
+        
+        
+        <ScrollView Orientation="Horizontal" Padding="0,0,0,20">
+            <GraphicsView Drawable="{StaticResource chartDrawable}" x:Name="graphics"
+                        WidthRequest="500" HeightRequest="500"
+                        HorizontalOptions="CenterAndExpand"/>
+        </ScrollView>
+
+
+        <StackLayout Grid.Column="0">
+            <Button Text="GO BACK" BorderWidth="1" VerticalOptions="End" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="returnButtonClicked">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#005A82" Offset="0.0"/>
+                        <GradientStop Color="#0397AB" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>

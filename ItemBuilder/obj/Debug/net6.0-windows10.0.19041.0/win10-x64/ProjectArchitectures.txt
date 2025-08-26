@@ -1,0 +1,1 @@
+C:\Users\Brice\Desktop\cse382_raynolbj\ItemBuilder\ItemBuilder\ItemBuilder.csproj;x64

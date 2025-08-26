@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ItemBuilder.MainPage"
+             Title="">
+    
+    <ContentPage.Resources>
+        <DataTemplate x:Key="LandscapeItemTemplate">
+            <ViewCell>
+                <!-- Use a horizontal StackLayout for landscape mode -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="{Binding Champ.ImageUrl}" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="{Binding Title}" FontSize="20" TextColor="#F0E6D2" Padding="15,0,0,0"/>
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <VerticalStackLayout Grid.Row="0" Spacing="25">
+            <Image Source="title.png" HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="30" Margin="0,10,0,0"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Spacing="2">
+                <Image Source="mybuilds.png" WidthRequest="150" HeightRequest="30" />
+                <BoxView HeightRequest="2" Color="#C8AA6E" HorizontalOptions="CenterAndExpand" WidthRequest="180" />
+            </StackLayout>
+
+            <Frame BorderColor="#C8AA6E" CornerRadius="0" Padding="0" Margin="5">
+                <SearchBar x:Name="searchBar" Placeholder="Search..." HorizontalOptions="FillAndExpand" HeightRequest="40" 
+               VerticalTextAlignment="Center" SearchButtonPressed="OnSearchButtonPressed" 
+               TextColor="#F0E6D2" />
+            </Frame>
+
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1" Padding="0,15,10,10" >
+            <ListView x:Name="Lv" ItemSelected="Lv_ItemSelected" MaximumHeightRequest="500">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BorderColor="#C89B3C" CornerRadius="5" HeightRequest="70" Margin="0,0,5,5">
+                                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="StartAndExpand">
+                                    <Image Source="{Binding Champ.ImageUrl}" WidthRequest="40" HeightRequest="40"/>
+                                    <Label Text="{Binding Title}" FontSize="20" TextColor="#F0E6D2" Padding="15,0,0,0"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="2" Padding="5,0,5,5">
+            
+            <StackLayout>
+                <Button Text="ADD" BorderWidth="1" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="AddButton_Clicked">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#005A82" Offset="0.0"/>
+                            <GradientStop Color="#0397AB" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+
+            <StackLayout>
+                <Button Text="SETTINGS" BorderWidth="1" BorderColor="#F0E6D2" TextColor="#C89B3C" FontAttributes="Bold" FontSize="15" Clicked="settingsButton_Clicked">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#005A82" Offset="1.0"/>
+                            <GradientStop Color="#0397AB" Offset="0.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+            
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
+
+
